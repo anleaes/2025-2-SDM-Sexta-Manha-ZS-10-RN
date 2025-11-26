@@ -6,7 +6,7 @@ import CategoriasScreen, { Categoria } from '../screens/CategoriasScreen';
 import HomeScreen from '../screens/HomeScreen';
 import CreateCategoriaScreen from '@/screens/CreateCategoriaScreen';
 import EditCategoriaScreen from '@/screens/EditCategoriaScreen';
-import LocalizacoesScreen from '@/screens/LocalizacoesScreen';
+import LocalizacoesScreen, { Localizacao } from '@/screens/LocalizacoesScreen';
 import CreateLocalizacaoScreen from '@/screens/CreateLocalizacaoScreen';
 import EditLocalizacaoScreen from '@/screens/EditLocalizacaoScreen';
 
