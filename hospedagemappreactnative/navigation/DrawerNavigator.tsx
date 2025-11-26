@@ -6,14 +6,18 @@ import CategoriasScreen, { Categoria } from '../screens/CategoriasScreen';
 import HomeScreen from '../screens/HomeScreen';
 import CreateCategoriaScreen from '@/screens/CreateCategoriaScreen';
 import EditCategoriaScreen from '@/screens/EditCategoriaScreen';
+import LocalizacoesScreen from '@/screens/LocalizacoesScreen';
 
 
 
 export type DrawerParamList = {
   Home: undefined;
+
   Categorias: undefined;
   CreateCategoria: undefined; 
   EditCategoria: { categoria: Categoria };
+
+  Localizacoes: undefined;
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -56,6 +60,14 @@ const DrawerNavigator = () => {
         name="EditCategoria"
         component={EditCategoriaScreen}
         options={{ drawerItemStyle: { display: 'none' }, title: 'Editar categoria' }}
+      />
+      <Drawer.Screen
+        name="Localizacoes"
+        component={LocalizacoesScreen}
+        options={{
+          drawerIcon: ({ color, size }) => <Ionicons name="location-outline" size={size} color={color} />,
+          title: 'Localizações',
+        }}
       />
     </Drawer.Navigator>  
   );
