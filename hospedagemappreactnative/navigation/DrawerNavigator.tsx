@@ -4,6 +4,7 @@ import React from 'react';
 import CustomDrawerContent from '../components/CustomDrawerContent';
 import CategoriasScreen, { Categoria } from '../screens/CategoriasScreen';
 import HomeScreen from '../screens/HomeScreen';
+import CreateCategoriaScreen from '@/screens/CreateCategoriaScreen';
 
 
 
@@ -44,6 +45,11 @@ const DrawerNavigator = () => {
           drawerIcon: ({ color, size }) => <Ionicons name="apps-sharp" size={size} color={color} />,
           title: 'Categorias',
         }}
+      />
+      <Drawer.Screen
+        name="CreateCategoria"
+        component={CreateCategoriaScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Nova categoria' }}
       />
     </Drawer.Navigator>  
   );
