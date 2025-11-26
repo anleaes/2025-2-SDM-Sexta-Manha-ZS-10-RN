@@ -7,6 +7,7 @@ import HomeScreen from '../screens/HomeScreen';
 import CreateCategoriaScreen from '@/screens/CreateCategoriaScreen';
 import EditCategoriaScreen from '@/screens/EditCategoriaScreen';
 import LocalizacoesScreen from '@/screens/LocalizacoesScreen';
+import CreateLocalizacaoScreen from '@/screens/CreateLocalizacaoScreen';
 
 
 
@@ -18,6 +19,7 @@ export type DrawerParamList = {
   EditCategoria: { categoria: Categoria };
 
   Localizacoes: undefined;
+  CreateLocalizacao: undefined;
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -68,6 +70,11 @@ const DrawerNavigator = () => {
           drawerIcon: ({ color, size }) => <Ionicons name="location-outline" size={size} color={color} />,
           title: 'Localizações',
         }}
+      />
+      <Drawer.Screen
+        name="CreateLocalizacao"
+        component={CreateLocalizacaoScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Nova localização' }}
       />
     </Drawer.Navigator>  
   );
