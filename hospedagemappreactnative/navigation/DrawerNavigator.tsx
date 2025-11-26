@@ -8,6 +8,7 @@ import CreateCategoriaScreen from '@/screens/CreateCategoriaScreen';
 import EditCategoriaScreen from '@/screens/EditCategoriaScreen';
 import LocalizacoesScreen from '@/screens/LocalizacoesScreen';
 import CreateLocalizacaoScreen from '@/screens/CreateLocalizacaoScreen';
+import EditLocalizacaoScreen from '@/screens/EditLocalizacaoScreen';
 
 
 
@@ -20,6 +21,7 @@ export type DrawerParamList = {
 
   Localizacoes: undefined;
   CreateLocalizacao: undefined;
+  EditLocalizacao: { localizacao: Localizacao };
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -75,6 +77,11 @@ const DrawerNavigator = () => {
         name="CreateLocalizacao"
         component={CreateLocalizacaoScreen}
         options={{ drawerItemStyle: { display: 'none' }, title: 'Nova localização' }}
+      />
+      <Drawer.Screen
+        name="EditLocalizacao"
+        component={EditLocalizacaoScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Editar localização' }}
       />
     </Drawer.Navigator>  
   );
