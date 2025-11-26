@@ -5,6 +5,7 @@ import CustomDrawerContent from '../components/CustomDrawerContent';
 import CategoriasScreen, { Categoria } from '../screens/CategoriasScreen';
 import HomeScreen from '../screens/HomeScreen';
 import CreateCategoriaScreen from '@/screens/CreateCategoriaScreen';
+import EditCategoriaScreen from '@/screens/EditCategoriaScreen';
 
 
 
@@ -50,6 +51,11 @@ const DrawerNavigator = () => {
         name="CreateCategoria"
         component={CreateCategoriaScreen}
         options={{ drawerItemStyle: { display: 'none' }, title: 'Nova categoria' }}
+      />
+      <Drawer.Screen
+        name="EditCategoria"
+        component={EditCategoriaScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Editar categoria' }}
       />
     </Drawer.Navigator>  
   );
