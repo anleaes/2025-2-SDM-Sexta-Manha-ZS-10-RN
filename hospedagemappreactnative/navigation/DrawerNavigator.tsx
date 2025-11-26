@@ -2,13 +2,17 @@ import { Ionicons } from '@expo/vector-icons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import React from 'react';
 import CustomDrawerContent from '../components/CustomDrawerContent';
-import CategoriasScreen, { Categoria } from '../screens/CategoriasScreen';
 import HomeScreen from '../screens/HomeScreen';
+
+import CategoriasScreen, { Categoria } from '../screens/CategoriasScreen';
 import CreateCategoriaScreen from '@/screens/CreateCategoriaScreen';
 import EditCategoriaScreen from '@/screens/EditCategoriaScreen';
+
 import LocalizacoesScreen, { Localizacao } from '@/screens/LocalizacoesScreen';
 import CreateLocalizacaoScreen from '@/screens/CreateLocalizacaoScreen';
 import EditLocalizacaoScreen from '@/screens/EditLocalizacaoScreen';
+
+import AnfitrioesScreen, { Anfitriao } from '@/screens/AnfitrioesScreen';
 
 
 
@@ -22,6 +26,8 @@ export type DrawerParamList = {
   Localizacoes: undefined;
   CreateLocalizacao: undefined;
   EditLocalizacao: { localizacao: Localizacao };
+
+  Anfitrioes: undefined;
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -82,6 +88,14 @@ const DrawerNavigator = () => {
         name="EditLocalizacao"
         component={EditLocalizacaoScreen}
         options={{ drawerItemStyle: { display: 'none' }, title: 'Editar localização' }}
+      />
+      <Drawer.Screen
+        name="Anfitrioes"
+        component={AnfitrioesScreen}
+        options={{
+          drawerIcon: ({ color, size }) => <Ionicons name="people-outline" size={size} color={color} />,
+          title: 'Anfitriões',
+        }}
       />
     </Drawer.Navigator>  
   );
