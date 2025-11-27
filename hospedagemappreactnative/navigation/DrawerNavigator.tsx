@@ -24,6 +24,8 @@ import ClientesScreen, { Cliente } from '@/screens/ClientesScreen';
 import CreateClienteScreen from '@/screens/CreateClienteScreen';
 import EditClienteScreen from '@/screens/EditClienteScreen';
 
+import HospedagensScreen, { Hospedagem } from '@/screens/HospedagensScreen';
+
 
 export type DrawerParamList = {
   Home: undefined;
@@ -47,6 +49,8 @@ export type DrawerParamList = {
   Clientes: undefined;
   CreateCliente: undefined;
   EditCliente: { cliente: Cliente };
+
+  Hospedagens: undefined;
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -161,6 +165,14 @@ const DrawerNavigator = () => {
         name="EditCliente"
         component={EditClienteScreen}
         options={{ drawerItemStyle: { display: 'none' }, title: 'Editar cliente' }}
+      />
+      <Drawer.Screen
+        name="Hospedagens"
+        component={HospedagensScreen}
+        options={{
+          drawerIcon: ({ color, size }) => <Ionicons name="bed-outline" size={size} color={color}  />,
+          title: 'Hospedagens',
+        }}
       />
     </Drawer.Navigator>  
   );
