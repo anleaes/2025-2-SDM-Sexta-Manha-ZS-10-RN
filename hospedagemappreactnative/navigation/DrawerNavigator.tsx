@@ -34,6 +34,7 @@ import EditReservaScreen from '@/screens/EditReservaScreen';
 
 import AvaliacoesScreen, { Avaliacao } from '@/screens/AvaliacoesScreen';
 import CreateAvaliacaoScreen from '@/screens/CreateAvaliacaoScreen';
+import EditAvaliacaoScreen from '@/screens/EditAvaliacaoScreen';
 
 export type DrawerParamList = {
   Home: undefined;
@@ -68,6 +69,7 @@ export type DrawerParamList = {
 
   Avaliacoes: undefined;
   CreateAvaliacao: undefined;
+  EditAvaliacao: { avaliacao: Avaliacao };
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -231,6 +233,11 @@ const DrawerNavigator = () => {
         name="CreateAvaliacao"
         component={CreateAvaliacaoScreen}
         options={{ drawerItemStyle: { display: 'none' }, title: 'Nova avaliação' }}
+      />
+      <Drawer.Screen
+        name="EditAvaliacao"
+        component={EditAvaliacaoScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Editar avaliação' }}
       />
     </Drawer.Navigator>  
   );
