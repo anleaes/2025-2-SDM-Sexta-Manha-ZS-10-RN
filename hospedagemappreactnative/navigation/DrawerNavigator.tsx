@@ -13,6 +13,7 @@ import CreateLocalizacaoScreen from '@/screens/CreateLocalizacaoScreen';
 import EditLocalizacaoScreen from '@/screens/EditLocalizacaoScreen';
 
 import AnfitrioesScreen, { Anfitriao } from '@/screens/AnfitrioesScreen';
+import CreateAnfitriaoScreen from '@/screens/CreateAnfitriaoScreen';
 
 
 
@@ -28,6 +29,7 @@ export type DrawerParamList = {
   EditLocalizacao: { localizacao: Localizacao };
 
   Anfitrioes: undefined;
+  CreateAnfitriao: undefined;
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -96,6 +98,11 @@ const DrawerNavigator = () => {
           drawerIcon: ({ color, size }) => <Ionicons name="people-outline" size={size} color={color} />,
           title: 'Anfitriões',
         }}
+      />
+      <Drawer.Screen
+        name="CreateAnfitriao"
+        component={CreateAnfitriaoScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Novo anfitrião' }}
       />
     </Drawer.Navigator>  
   );
