@@ -26,6 +26,7 @@ import EditClienteScreen from '@/screens/EditClienteScreen';
 
 import HospedagensScreen, { Hospedagem } from '@/screens/HospedagensScreen';
 import CreateHospedagemScreen from '@/screens/CreateHospedagemScreen';
+import EditHospedagemScreen from '@/screens/EditHospedagemScreen';
 
 
 export type DrawerParamList = {
@@ -53,6 +54,7 @@ export type DrawerParamList = {
 
   Hospedagens: undefined;
   CreateHospedagem: undefined;
+  EditHospedagem: { hospedagem: Hospedagem };
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -180,6 +182,11 @@ const DrawerNavigator = () => {
         name="CreateHospedagem"
         component={CreateHospedagemScreen}
         options={{ drawerItemStyle: { display: 'none' }, title: 'Nova hospedagem' }}
+      />
+      <Drawer.Screen
+        name="EditHospedagem"
+        component={EditHospedagemScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Editar hospedagem' }}
       />
     </Drawer.Navigator>  
   );
