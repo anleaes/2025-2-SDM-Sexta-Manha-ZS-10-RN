@@ -29,6 +29,7 @@ import CreateHospedagemScreen from '@/screens/CreateHospedagemScreen';
 import EditHospedagemScreen from '@/screens/EditHospedagemScreen';
 
 import ReservasScreen, { Reserva } from '@/screens/ReservasScreen';
+import CreateReservaScreen from '@/screens/CreateReservaScreen';
 
 
 export type DrawerParamList = {
@@ -59,6 +60,7 @@ export type DrawerParamList = {
   EditHospedagem: { hospedagem: Hospedagem };
 
   Reservas: undefined;
+  CreateReserva: undefined;
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -199,6 +201,11 @@ const DrawerNavigator = () => {
           drawerIcon: ({ color, size }) => <Ionicons name="calendar-outline" size={size} color={color}  />,
           title: 'Reservas',
         }}
+      />
+      <Drawer.Screen
+        name="CreateReserva"
+        component={CreateReservaScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Nova reserva' }}
       />
     </Drawer.Navigator>  
   );
