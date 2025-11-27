@@ -25,6 +25,7 @@ import CreateClienteScreen from '@/screens/CreateClienteScreen';
 import EditClienteScreen from '@/screens/EditClienteScreen';
 
 import HospedagensScreen, { Hospedagem } from '@/screens/HospedagensScreen';
+import CreateHospedagemScreen from '@/screens/CreateHospedagemScreen';
 
 
 export type DrawerParamList = {
@@ -51,6 +52,7 @@ export type DrawerParamList = {
   EditCliente: { cliente: Cliente };
 
   Hospedagens: undefined;
+  CreateHospedagem: undefined;
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -173,6 +175,11 @@ const DrawerNavigator = () => {
           drawerIcon: ({ color, size }) => <Ionicons name="bed-outline" size={size} color={color}  />,
           title: 'Hospedagens',
         }}
+      />
+      <Drawer.Screen
+        name="CreateHospedagem"
+        component={CreateHospedagemScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Nova hospedagem' }}
       />
     </Drawer.Navigator>  
   );
