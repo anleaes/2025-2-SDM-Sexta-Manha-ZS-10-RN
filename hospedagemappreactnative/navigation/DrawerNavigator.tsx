@@ -33,6 +33,7 @@ import CreateReservaScreen from '@/screens/CreateReservaScreen';
 import EditReservaScreen from '@/screens/EditReservaScreen';
 
 import AvaliacoesScreen, { Avaliacao } from '@/screens/AvaliacoesScreen';
+import CreateAvaliacaoScreen from '@/screens/CreateAvaliacaoScreen';
 
 export type DrawerParamList = {
   Home: undefined;
@@ -66,6 +67,7 @@ export type DrawerParamList = {
   EditReserva: { reserva: Reserva };
 
   Avaliacoes: undefined;
+  CreateAvaliacao: undefined;
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -224,6 +226,11 @@ const DrawerNavigator = () => {
           drawerIcon: ({ color, size }) => <Ionicons name="star-outline" size={size} color={color}  />,
           title: 'Avaliações',
         }}
+      />
+      <Drawer.Screen
+        name="CreateAvaliacao"
+        component={CreateAvaliacaoScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Nova avaliação' }}
       />
     </Drawer.Navigator>  
   );
