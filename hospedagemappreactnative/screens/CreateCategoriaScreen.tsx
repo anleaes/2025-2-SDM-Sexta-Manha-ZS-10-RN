@@ -62,7 +62,6 @@ const CreateCategoriaScreen = ({ navigation }: Props) => {
       <Switch
         value={ativo}
         onValueChange={setAtivo}
-        style={styles.input}
       />
       {saving
         ? <ActivityIndicator size="large" color="#4B7BE5" />
