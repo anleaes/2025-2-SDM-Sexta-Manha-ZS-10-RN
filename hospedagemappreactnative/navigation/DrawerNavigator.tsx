@@ -20,6 +20,8 @@ import PagamentosScreen, { Pagamento } from '@/screens/PagamentosScreen';
 import CreatePagamentoScreen from '@/screens/CreatePagamentoScreen';
 import EditPagamentoScreen from '@/screens/EditPagamentoScreen';
 
+import ClientesScreen from '@/screens/ClientesScreen';
+
 
 
 export type DrawerParamList = {
@@ -40,6 +42,8 @@ export type DrawerParamList = {
   Pagamentos: undefined;
   CreatePagamento: undefined;
   EditPagamento: { pagamento: Pagamento };
+
+  Clientes: undefined;
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -136,6 +140,14 @@ const DrawerNavigator = () => {
         name="EditPagamento"
         component={EditPagamentoScreen}
         options={{ drawerItemStyle: { display: 'none' }, title: 'Editar pagamento' }}
+      />
+      <Drawer.Screen
+        name="Clientes"
+        component={ClientesScreen}
+        options={{
+          drawerIcon: ({ color, size }) => <Ionicons name="person-outline" size={size} color={color}  />,
+          title: 'Clientes',
+        }}
       />
     </Drawer.Navigator>  
   );
