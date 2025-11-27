@@ -16,8 +16,9 @@ import AnfitrioesScreen, { Anfitriao } from '@/screens/AnfitrioesScreen';
 import CreateAnfitriaoScreen from '@/screens/CreateAnfitriaoScreen';
 import EditAnfitriaoScreen from '@/screens/EditAnfitriaoScreen';
 
-import PagamentosScreen from '@/screens/PagamentosScreen';
+import PagamentosScreen, { Pagamento } from '@/screens/PagamentosScreen';
 import CreatePagamentoScreen from '@/screens/CreatePagamentoScreen';
+import EditPagamentoScreen from '@/screens/EditPagamentoScreen';
 
 
 
@@ -38,6 +39,7 @@ export type DrawerParamList = {
 
   Pagamentos: undefined;
   CreatePagamento: undefined;
+  EditPagamento: { pagamento: Pagamento };
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -129,6 +131,11 @@ const DrawerNavigator = () => {
         name="CreatePagamento"
         component={CreatePagamentoScreen}
         options={{ drawerItemStyle: { display: 'none' }, title: 'Novo pagamento' }}
+      />
+      <Drawer.Screen
+        name="EditPagamento"
+        component={EditPagamentoScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Editar pagamento' }}
       />
     </Drawer.Navigator>  
   );
