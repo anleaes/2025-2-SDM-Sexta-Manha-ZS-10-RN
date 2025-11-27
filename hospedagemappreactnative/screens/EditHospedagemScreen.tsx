@@ -1,5 +1,5 @@
 import { DrawerScreenProps } from '@react-navigation/drawer';
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { ActivityIndicator, Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import { DrawerParamList } from '../navigation/DrawerNavigator';
 import { Switch } from 'react-native-gesture-handler';
@@ -43,6 +43,16 @@ const EditHospedagemScreen = ({ route, navigation }: Props) => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    setNome(hospedagem.nome);
+    setDescricao(hospedagem.descricao);
+    setPrecoDiaria(String(hospedagem.preco_diaria));
+    setDisponivel(hospedagem.disponivel);
+    setCategoria(hospedagem.categoria);
+    setLocalizacao(hospedagem.localizacao);
+    setAnfitriao(hospedagem.anfitriao);
+  }, [hospedagem]);
 
   const handleSave = async () => {
     setSaving(true);
