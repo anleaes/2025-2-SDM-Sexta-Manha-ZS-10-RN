@@ -20,9 +20,9 @@ import PagamentosScreen, { Pagamento } from '@/screens/PagamentosScreen';
 import CreatePagamentoScreen from '@/screens/CreatePagamentoScreen';
 import EditPagamentoScreen from '@/screens/EditPagamentoScreen';
 
-import ClientesScreen from '@/screens/ClientesScreen';
+import ClientesScreen, { Cliente } from '@/screens/ClientesScreen';
 import CreateClienteScreen from '@/screens/CreateClienteScreen';
-
+import EditClienteScreen from '@/screens/EditClienteScreen';
 
 
 export type DrawerParamList = {
@@ -46,6 +46,7 @@ export type DrawerParamList = {
 
   Clientes: undefined;
   CreateCliente: undefined;
+  EditCliente: { cliente: Cliente };
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -155,6 +156,11 @@ const DrawerNavigator = () => {
         name="CreateCliente"
         component={CreateClienteScreen}
         options={{ drawerItemStyle: { display: 'none' }, title: 'Novo cliente' }}
+      />
+      <Drawer.Screen
+        name="EditCliente"
+        component={EditClienteScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Editar cliente' }}
       />
     </Drawer.Navigator>  
   );
