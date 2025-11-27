@@ -30,7 +30,7 @@ import EditHospedagemScreen from '@/screens/EditHospedagemScreen';
 
 import ReservasScreen, { Reserva } from '@/screens/ReservasScreen';
 import CreateReservaScreen from '@/screens/CreateReservaScreen';
-
+import EditReservaScreen from '@/screens/EditReservaScreen';
 
 export type DrawerParamList = {
   Home: undefined;
@@ -61,6 +61,7 @@ export type DrawerParamList = {
 
   Reservas: undefined;
   CreateReserva: undefined;
+  EditReserva: { reserva: Reserva };
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -206,6 +207,11 @@ const DrawerNavigator = () => {
         name="CreateReserva"
         component={CreateReservaScreen}
         options={{ drawerItemStyle: { display: 'none' }, title: 'Nova reserva' }}
+      />
+      <Drawer.Screen
+        name="EditReserva"
+        component={EditReservaScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Editar reserva' }}
       />
     </Drawer.Navigator>  
   );
