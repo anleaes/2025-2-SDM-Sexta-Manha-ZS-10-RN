@@ -21,6 +21,7 @@ import CreatePagamentoScreen from '@/screens/CreatePagamentoScreen';
 import EditPagamentoScreen from '@/screens/EditPagamentoScreen';
 
 import ClientesScreen from '@/screens/ClientesScreen';
+import CreateClienteScreen from '@/screens/CreateClienteScreen';
 
 
 
@@ -44,6 +45,7 @@ export type DrawerParamList = {
   EditPagamento: { pagamento: Pagamento };
 
   Clientes: undefined;
+  CreateCliente: undefined;
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -148,6 +150,11 @@ const DrawerNavigator = () => {
           drawerIcon: ({ color, size }) => <Ionicons name="person-outline" size={size} color={color}  />,
           title: 'Clientes',
         }}
+      />
+      <Drawer.Screen
+        name="CreateCliente"
+        component={CreateClienteScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Novo cliente' }}
       />
     </Drawer.Navigator>  
   );
