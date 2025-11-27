@@ -78,6 +78,16 @@ const EditReservaScreen = ({ route, navigation }: Props) => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    setDataCheckin(reserva.data_checkin);
+    setDataCheckout(reserva.data_checkout);
+    setQuantidadeHospedes(String(reserva.quantidade_hospedes));
+    setValorTotal(String(reserva.valor_total));
+    setCliente(reserva.cliente);
+    setHospedagem(reserva.hospedagem);
+    setPagamentosSelecionados(reserva.pagamento || []);
+  }, [reserva]);
+
   const togglePagamento = (id: number) => {
     setPagamentosSelecionados(prev =>
       prev.includes(id) ? prev.filter(p => p !== id) : [...prev, id]

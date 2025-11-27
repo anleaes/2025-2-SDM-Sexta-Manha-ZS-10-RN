@@ -40,6 +40,14 @@ const EditAvaliacaoScreen = ({ route, navigation }: Props) => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    setNota(String(avaliacao.nota));
+    setComentario(avaliacao.comentario);
+    setPublicada(avaliacao.publicada);
+    setAutor(avaliacao.autor);
+    setHospedagem(avaliacao.hospedagem);
+  }, [avaliacao]);
+
   const handleSave = async () => {
     setSaving(true);
     const res = await fetch(`http://localhost:8000/avaliacoes/${avaliacao.id}/`, {
