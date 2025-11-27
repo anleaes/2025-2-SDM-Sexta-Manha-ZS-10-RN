@@ -58,7 +58,7 @@ const CreatePagamentoScreen = ({ navigation }: Props) => {
         onChangeText={setStatusPagamento}
         style={styles.input}
       />
-      <Text style={styles.label}>Data (YYYY-MM-DD)</Text>
+      <Text style={styles.label}>Data (AAAA-MM-DD)</Text>
       <TextInput
         value={data_pagamento}
         onChangeText={setDataPagamento}
