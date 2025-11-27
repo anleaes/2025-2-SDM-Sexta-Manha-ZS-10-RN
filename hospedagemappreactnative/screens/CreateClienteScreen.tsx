@@ -43,7 +43,7 @@ const CreateClienteScreen = ({ navigation }: Props) => {
       <TextInput value={email} onChangeText={setEmail} style={styles.input} />
       <Text style={styles.label}>Telefone</Text>
       <TextInput value={telefone} onChangeText={setTelefone} style={styles.input} />
-      <Text style={styles.label}>Data de Cadastro (YYYY-MM-DD)</Text>
+      <Text style={styles.label}>Data de Cadastro (AAAA-MM-DD)</Text>
       <TextInput value={data_cadastro} onChangeText={setDataCadastro} style={styles.input} />
       {saving ? (
         <ActivityIndicator size="large" color="#4B7BE5" />
