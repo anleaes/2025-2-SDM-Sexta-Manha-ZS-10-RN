@@ -14,6 +14,7 @@ import EditLocalizacaoScreen from '@/screens/EditLocalizacaoScreen';
 
 import AnfitrioesScreen, { Anfitriao } from '@/screens/AnfitrioesScreen';
 import CreateAnfitriaoScreen from '@/screens/CreateAnfitriaoScreen';
+import EditAnfitriaoScreen from '@/screens/EditAnfitriaoScreen';
 
 
 
@@ -30,6 +31,7 @@ export type DrawerParamList = {
 
   Anfitrioes: undefined;
   CreateAnfitriao: undefined;
+  EditAnfitriao: { anfitriao: Anfitriao };
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -103,6 +105,11 @@ const DrawerNavigator = () => {
         name="CreateAnfitriao"
         component={CreateAnfitriaoScreen}
         options={{ drawerItemStyle: { display: 'none' }, title: 'Novo anfitrião' }}
+      />
+      <Drawer.Screen
+        name="EditAnfitriao"
+        component={EditAnfitriaoScreen}
+        options={{ drawerItemStyle: { display: 'none' }, title: 'Editar anfitrião' }}
       />
     </Drawer.Navigator>  
   );
