@@ -1,11 +1,11 @@
 import { DrawerScreenProps } from '@react-navigation/drawer';
-import { useFocusEffect } from 'expo-router';
-import React, { useCallback, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Button, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { DrawerParamList } from '../navigation/DrawerNavigator';
+import { Reserva } from './ReservasScreen';
 
-type Props = DrawerScreenProps<DrawerParamList, 'CreateReserva'>;
+type Props = DrawerScreenProps<DrawerParamList, 'EditReserva'>;
 
 type Pagamento = {
   id: number;
@@ -34,18 +34,23 @@ type Hospedagem = {
   anfitriao: number;
 };
 
-const CreateReservaScreen = ({ navigation }: Props) => {
-  const [dataCheckin, setDataCheckin] = useState('');
-  const [dataCheckout, setDataCheckout] = useState('');
-  const [quantidadeHospedes, setQuantidadeHospedes] = useState('');
-  const [valorTotal, setValorTotal] = useState('');
+const EditReservaScreen = ({ route, navigation }: Props) => {
+  const { reserva } = route.params as { reserva: Reserva };
 
-  const [cliente, setCliente] = useState<number | null>(null);
-  const [hospedagem, setHospedagem] = useState<number | null>(null);
+  const [dataCheckin, setDataCheckin] = useState(reserva.data_checkin);
+  const [dataCheckout, setDataCheckout] = useState(reserva.data_checkout);
+  const [quantidadeHospedes, setQuantidadeHospedes] = useState( String(reserva.quantidade_hospedes) );
+  const [valorTotal, setValorTotal] = useState(String(reserva.valor_total));
+
+  const [cliente, setCliente] = useState<number | null>(reserva.cliente);
+  const [hospedagem, setHospedagem] = useState<number | null>(reserva.hospedagem);
+  const [pagamentosSelecionados, setPagamentosSelecionados] = useState<number[]>(
+    reserva.pagamento || []
+  );
+
   const [pagamentos, setPagamentos] = useState<Pagamento[]>([]);
   const [clientes, setClientes] = useState<Cliente[]>([]);
   const [hospedagens, setHospedagens] = useState<Hospedagem[]>([]);
-  const [pagamentosSelecionados, setPagamentosSelecionados] = useState<number[]>([]);
 
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -66,22 +71,12 @@ const CreateReservaScreen = ({ navigation }: Props) => {
     setClientes(clientesData);
     setHospedagens(hospedagensData);
 
-    if (clientesData.length > 0) setCliente(clientesData[0].id);
-    if (hospedagensData.length > 0) setHospedagem(hospedagensData[0].id);
-
-    setPagamentosSelecionados([]);
     setLoading(false);
   };
 
-  useFocusEffect(
-    useCallback(() => {
-      setDataCheckin('');
-      setDataCheckout('');
-      setQuantidadeHospedes('');
-      setValorTotal('');
-      fetchData();
-    }, [])
-  );
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const togglePagamento = (id: number) => {
     setPagamentosSelecionados(prev =>
@@ -91,8 +86,8 @@ const CreateReservaScreen = ({ navigation }: Props) => {
 
   const handleSave = async () => {
     setSaving(true);
-    const res = await fetch('http://localhost:8000/reservas/', {
-      method: 'POST',
+    const res = await fetch(`http://localhost:8000/reservas/${reserva.id}/`, {
+      method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ data_checkin: dataCheckin, data_checkout: dataCheckout, quantidade_hospedes: Number(quantidadeHospedes), valor_total: Number(valorTotal), cliente, hospedagem, pagamento: pagamentosSelecionados }),
     });
@@ -102,16 +97,14 @@ const CreateReservaScreen = ({ navigation }: Props) => {
 
   if (loading) {
     return (
-      <View>
+      <View style={styles.loadingContainer}>
         <ActivityIndicator size="large" color="#4B7BE5" />
       </View>
     );
   }
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Nova reserva</Text>
-
+    <View style={styles.container}>
       <Text style={styles.label}>Data de Check-in (AAAA-MM-DD)</Text>
       <TextInput
         value={dataCheckin}
@@ -188,7 +181,7 @@ const CreateReservaScreen = ({ navigation }: Props) => {
         <Button title="Salvar" onPress={handleSave} color="#4B7BE5" />
       )}
       <Button title="Voltar" onPress={() => navigation.navigate('Reservas')} />
-    </ScrollView>
+    </View>
   );
 };
 
@@ -211,7 +204,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   label: {
-    fontWeight: '600',
+    fontWeight: 'bold',
     marginTop: 12,
     marginBottom: 4,
   },
@@ -243,5 +236,4 @@ const styles = StyleSheet.create({
   },
 });
 
-
-export default CreateReservaScreen;
+export default EditReservaScreen;
